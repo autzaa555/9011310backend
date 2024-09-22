@@ -24,18 +24,50 @@ npm run dev
 ```bash
 .
 ├── README.md
-├── compose.yml
+├── docker-compose.yml
 ├── .gitignore
 ├── .env
-├── backend
+├── go.mod
+├── go.sum
+├── #backend
 │   ├── cmd
-│   ├── go.mod
-│   ├── go.sum
+│   │   └──  app
+│   │        └──  main.go
+│   ├── data
+│   │    └──  db
+│   │
 │   ├── internal
+│   │   ├── constant
+│   │   │   └──  item.go
+│   │   ├── item
+│   │   │   ├── controller.go
+│   │   │   ├── repository.go
+│   │   │   └── service.go
+│   │   └── model
+│   │      └── item.go
 │   └── migrations
-└── frontend
+│       └── 20240921032817_create_item_table.sql
+└── #frontend
     ├── README.md
+    ├── .next    
     ├── app
+    │   ├── component
+    │   │   ├── button.tsx
+    │   │   └── navbar.tsx
+    │   ├── create
+    │   │   └── page.tsx
+    │   ├── edit
+    │   │   └── id
+    │   │       └── page.tsx
+    │   ├── fonts 
+    │   │   ├── GeistMonoVF.woff
+    │   │   └── GeistVF.woff
+    │   ├── table
+    │   │   └── page.tsx
+    │   ├── favicon.ico
+    │   ├── globals.css
+    │   ├── layout.tsx
+    │   └── page.tsx
     ├── next-env.d.ts
     ├── next.config.mjs
     ├── node_modules
@@ -44,9 +76,10 @@ npm run dev
     ├── postcss.config.mjs
     ├── tailwind.config.ts
     └── tsconfig.json
-
-
-echo "# CodeGIT" >> README.md
+```
+# 9011310backend
+```bash
+echo "# 9011310backend" >> README.md
 git init
 git add README.md
 git add .
@@ -55,3 +88,4 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/autzaa555/9011310backend.git
 git push -u origin main
+```
