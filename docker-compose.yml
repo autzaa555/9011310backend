@@ -1,14 +1,18 @@
 services:
 
-  db:
-    image: postgres:16
-    container_name: postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    ports:
-      - "${PORT_DB}:5432"
-    restart: always
+  db:  # กำหนดชื่อ service เป็น 'db' ซึ่งเป็นส่วนของฐานข้อมูล
+    image: postgres:16  # ใช้ Docker image ของ PostgreSQL เวอร์ชัน 16
+    container_name: postgres  # ตั้งชื่อ container ที่จะถูกสร้างจาก service นี้เป็น 'postgres'
+    
+    volumes:  # กำหนด volume สำหรับการเก็บข้อมูลถาวรของฐานข้อมูล
+      - ./data/db:/var/lib/postgresql/data  # Mount ไดเร็กทอรีใน local (./data/db) ไปที่ไดเร็กทอรีใน container (/var/lib/postgresql/data)
+    
+    environment:  # กำหนดตัวแปรสภาพแวดล้อมสำหรับ PostgreSQL
+      - POSTGRES_DB=${POSTGRES_DB}  # ชื่อฐานข้อมูล ถูกดึงมาจากไฟล์ .env
+      - POSTGRES_USER=${POSTGRES_USER}  # ชื่อผู้ใช้ของฐานข้อมูล ถูกดึงมาจากไฟล์ .env
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}  # รหัสผ่านสำหรับฐานข้อมูล ถูกดึงมาจากไฟล์ .env
+    
+    ports:  # กำหนดพอร์ตการเข้าถึงของ PostgreSQL
+      - "${PORT_DB}:5432"  # เปิดพอร์ตที่ระบุในไฟล์ .env (PORT_DB) แล้วแมปเข้ากับพอร์ต 5432 ของ PostgreSQL ใน container
+    
+    restart: always  # ตั้งค่าให้ container restart อัตโนมัติเมื่อเกิดข้อผิดพลาดหรือเซิร์ฟเวอร์ถูกรีสตาร์ท

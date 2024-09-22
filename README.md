@@ -49,6 +49,8 @@ npm run dev
 echo "# CodeGIT" >> README.md
 git init
 git add README.md
+git add .
+git status
 git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/autzaa555/9011310backend.git
